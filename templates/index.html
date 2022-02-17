@@ -1,0 +1,19 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+Merriam-Webster Dictionary Knockoff</title>
+{% endblock %}
+
+{% block content %}
+{{ wtf.quick_form(form, novalidate = True) }}
+<br>
+{% if short_def == 'error' %}
+<p>Sorry, the word you entered is not in our dictionary database.  Check it and try again.</p>
+{% else %}
+{% for item in short_def %}
+<p>{{ item }}</p>
+{% endfor %}
+{% endif %}
+<br>
+{% endblock %}
